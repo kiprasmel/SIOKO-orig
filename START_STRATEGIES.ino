@@ -524,3 +524,58 @@ void zigzag_kaire_D()
     delay(150);*/
 }
 //------------------------------------------------------------------------------
+
+bool arMato(const byte sensorius) {
+	return digitalRead(sensorius) == 0 ? true : false;
+}
+
+bool arPriekisMatoBentVienas() {
+	if (
+		   arMato(Middle1)
+		|| arMato(Middle2)
+		|| arMato(Middle22)
+		|| arMato(Middle3)
+	) {
+		return true;
+	}
+
+	return false;
+}
+
+bool arKaireMatoBentVienas() {
+	if (
+		   arMato(Left1)
+		|| arMato(Left2)
+		|| arMato(Left22)
+		|| arMato(Left3)
+	) {
+		return true;
+	}
+
+	return false;
+}
+
+bool arDesineMatoBentVienas() {
+	if (
+		   arMato(Right1)
+		|| arMato(Right2)
+		|| arMato(Right22)
+		|| arMato(Right3)
+	) {
+		return true;
+	}
+
+	return false;
+}
+
+bool arNutrauktiLaukima() {
+	if (
+		/** TODO - o kur middle panasonic? */
+		(arMato(Middle2) || arMato(Middle22)) /** priekis */
+		&& (arMato(Middle1) || arMato(Middle3)) /** šoninis */
+	) {
+		return true;
+	}
+
+	return false;
+}
