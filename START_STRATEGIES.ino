@@ -290,7 +290,7 @@ void zigzag_desine_D()
       see = true;
       break;
     }
-    if (digitalRead(Middle1) == 0 or digitalRead(Middle2) == 0 or digitalRead(Middle22) == 1 or digitalRead(Middle3) == 0)
+    if (digitalRead(Middle1) == 0 or digitalRead(Middle2) == 0 or digitalRead(Middle22) == 0 or digitalRead(Middle3) == 0)
     {
       see = true;
       break;
@@ -308,7 +308,7 @@ void zigzag_desine_D()
         see = true;
         break;
       }
-      if (digitalRead(Middle1) == 0 or digitalRead(Middle2) == 0 or digitalRead(Middle22) == 1 or digitalRead(Middle3) == 0)
+      if (digitalRead(Middle1) == 0 or digitalRead(Middle2) == 0 or digitalRead(Middle22) == 0 or digitalRead(Middle3) == 0)
       {
         see = true;
         break;
@@ -327,7 +327,7 @@ void zigzag_desine_D()
         see = true;
         break;
       }
-      if (digitalRead(Middle1) == 0 or digitalRead(Middle2) == 0 or digitalRead(Middle22) == 1 or digitalRead(Middle3) == 0)
+      if (digitalRead(Middle1) == 0 or digitalRead(Middle2) == 0 or digitalRead(Middle22) == 0 or digitalRead(Middle3) == 0)
       {
         see = true;
         break;
@@ -346,7 +346,7 @@ void zigzag_desine_D()
         see = true;
         break;
       }
-      if (digitalRead(Middle1) == 0 or digitalRead(Middle2) == 0 or digitalRead(Middle22) == 1 or digitalRead(Middle3) == 0)
+      if (digitalRead(Middle1) == 0 or digitalRead(Middle2) == 0 or digitalRead(Middle22) == 0 or digitalRead(Middle3) == 0)
       {
         see = true;
         break;
@@ -365,7 +365,7 @@ void zigzag_desine_D()
         see = true;
         break;
       }
-      if (digitalRead(Middle1) == 0 or digitalRead(Middle2) == 0 or digitalRead(Middle22) == 1 or digitalRead(Middle3) == 0)
+      if (digitalRead(Middle1) == 0 or digitalRead(Middle2) == 0 or digitalRead(Middle22) == 0 or digitalRead(Middle3) == 0)
       {
         see = true;
         break;
@@ -384,7 +384,7 @@ void zigzag_desine_D()
         see = true;
         break;
       }
-      if (digitalRead(Middle1) == 0 or digitalRead(Middle2) == 0 or digitalRead(Middle22) == 1 or digitalRead(Middle3) == 0)
+      if (digitalRead(Middle1) == 0 or digitalRead(Middle2) == 0 or digitalRead(Middle22) == 0 or digitalRead(Middle3) == 0)
       {
         see = true;
         break;
