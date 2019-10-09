@@ -47,7 +47,7 @@ const byte Right22 = 18;//lazeris ilgas
 const byte Right3 = 17;//21 lazeris trumpas
 //--------------------gali pjautis trumpas su ilgu---------------------
 //const byte Right3 = 17;//21 lazeris trumpas
-const byte Middle1 = 21;//20 pan sone 
+const byte Middle1 = 21;//20 pan sone
 const byte Middle2 = 15;//19  yra lazeris trumpas
 const byte Middle22 = 16;//19  yra lazeris ilgas------------------- pasitikrinti ar mato per leda !!!!!
 const byte Middle3 = 34;//33   pan sone
@@ -112,27 +112,27 @@ void setup() {
   pinMode(RightLine1, INPUT); //RightLine1
   pinMode(RightLine2, INPUT); //RightLine2
 
- 
+
   pinMode(Right1, INPUT);
   pinMode(Right2, INPUT);
   pinMode(Right3, INPUT);
   pinMode(Right22, INPUT);
 
-  
+
   pinMode(Middle1, INPUT);
   pinMode(Middle2, INPUT);
   pinMode(Middle22, INPUT);
   pinMode(Middle3, INPUT);
-  
+
   pinMode(Left22, INPUT);
   pinMode(Left3, INPUT);
   pinMode(Left2, INPUT);
   pinMode(Left1, INPUT);
-  
-  
+
+
 
   analogWriteFrequency(9, 15000);//
-  analogWriteFrequency(7, 15000);// varikliu valdymo daznis 
+  analogWriteFrequency(7, 15000);// varikliu valdymo daznis
 
   irrecv.enableIRIn();
   IR_Remote();
@@ -149,8 +149,27 @@ void setup() {
       digitalWrite(13, LOW);
     }
   }
-  Start_Streategy();
+
+  	Start_Streategy();
 }
+
+/**
+ * paprastas startinės strategijos testavimas
+ * bus galima ištrinti.
+ */
+// // void loop()
+// // {
+// // 	// 	Serial.print("\nstart Strategija ");
+// // 	// Serial.print(START_STRATEGY_STATE);
+
+// // 	digitalWrite(13, HIGH);
+
+// //   	Start_Streategy();
+
+// // 	digitalWrite(13, LOW);
+
+// // 	delay(1000);
+// // }
 
 //------------------------------------------------------------------------------
 void loop() {
@@ -256,7 +275,7 @@ void motor(int a, int b) {
   a = constrain(a, -255, 255);
   b = constrain(b, -255, 255);
  //a-=60;//beveik//60
- 
+
   if (digitalRead(START_MODULE)== LOW) {
       a=0;
       b=0;
@@ -299,7 +318,7 @@ int Jutikliu_duom() {
   }
   //Sonai
 
-  
+
   if (digitalRead(Right1) == 0)     bitSet(mySIDES, 0);//90
   if (digitalRead(Right2) == 0)     bitSet(mySIDES, 1);//45
   if (digitalRead(Right22) == 0)  bitSet(mySIDES, 2);// 45 lazeris
@@ -308,7 +327,7 @@ int Jutikliu_duom() {
   if (digitalRead(Left22) == 0)   bitSet(mySIDES, 3);//45 lazeris
   if (digitalRead(Left2) == 0)      bitSet(mySIDES, 4);//45
   if (digitalRead(Left1) == 0)      bitSet(mySIDES, 5);//90
-  
+
 
   //Priekis
   //if (digitalRead(Right3) == 0)     bitSet(myFRONT, 0);//0
@@ -318,7 +337,7 @@ int Jutikliu_duom() {
   if (digitalRead(Middle3) == 0)    bitSet(myFRONT, 3);//3
   //if (digitalRead(Left3) == 0)      bitSet(myFRONT, 5);//4
 
- 
+
 
   //Linija
   if (digitalRead(LeftLine1) == 1)    bitSet(myLINE, 3);
