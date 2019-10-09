@@ -21,6 +21,10 @@ void Start_Streategy()
       break;
     case 7: zigzag_kaire_D();
       break;
+	case 8: {
+		laukimoStrategija();
+		break;
+	}
   }
 }
 //------------------------------------------------------------------------------
@@ -578,4 +582,32 @@ bool arNutrauktiLaukima() {
 	}
 
 	return false;
+}
+
+void laukimoStrategija() {
+	while (!arNutrauktiLaukima())
+	{
+		Jutikliu_duom();
+		Line();
+
+		if (arPriekisMatoBentVienas())
+		{
+			motor(0, 0);
+		}
+		else if (arDesineMatoBentVienas())
+		{
+			motor(+SPEED_TURN, -SPEED_TURN);
+		}
+		else if (arKaireMatoBentVienas())
+		{
+			motor(-SPEED_TURN, +SPEED_TURN);
+		}
+		else {
+			motor(0, 0);
+		}
+	}
+
+	motor(255, 255);
+
+	return;
 }
