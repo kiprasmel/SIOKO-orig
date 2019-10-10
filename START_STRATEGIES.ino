@@ -588,7 +588,7 @@ void laukimoStrategija() {
 	while (!arNutrauktiLaukima())
 	{
 		Jutikliu_duom();
-		Line();
+		// Line(); /** TODO FIXME - linija trukdo laukimo strategijai. */
 
 		if (arPriekisMatoBentVienas())
 		{
