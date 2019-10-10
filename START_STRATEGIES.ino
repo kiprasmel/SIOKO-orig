@@ -585,6 +585,15 @@ bool arNutrauktiLaukima() {
 }
 
 void laukimoStrategija() {
+  enum Sonai {
+    priekis,
+    kaire,
+    desine,
+    nezinomas
+  } paskutinePozicija;
+
+  paskutinePozicija == Sonai::nezinomas;
+
 	while (!arNutrauktiLaukima())
 	{
 		Jutikliu_duom();
@@ -593,17 +602,29 @@ void laukimoStrategija() {
 		if (arPriekisMatoBentVienas())
 		{
 			motor(0, 0);
+      paskutinePozicija = Sonai::priekis;
 		}
 		else if (arDesineMatoBentVienas())
 		{
 			motor(+SPEED_TURN, -SPEED_TURN);
+      paskutinePozicija = Sonai::desine;
 		}
 		else if (arKaireMatoBentVienas())
 		{
 			motor(-SPEED_TURN, +SPEED_TURN);
+      paskutinePozicija = Sonai::kaire;
 		}
 		else {
-			motor(0, 0);
+			if (paskutinePozicija == Sonai::priekis) {
+        motor(0, 0);
+      } else if (paskutinePozicija == Sonai::kaire) {
+        motor(-SPEED_TURN, +SPEED_TURN);
+      } else if (paskutinePozicija == Sonai::desine) {
+        motor(+SPEED_TURN, -SPEED_TURN);
+      } else {
+        motor(0, 0);
+        paskutinePozicija == Sonai::nezinomas;
+      }
 		}
 	}
 
