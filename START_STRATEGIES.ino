@@ -1,3 +1,5 @@
+#include "START_STRATEGIES.h"
+
 void Start_Streategy()
 {
   //Pradinės strategijos
