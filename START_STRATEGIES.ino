@@ -23,9 +23,15 @@ void Start_Streategy()
       break;
     case 7: zigzag_kaire_D();
       break;
+	// case 8: {
+	// 	laukimoStrategija();
+	// 	break;
+	// }
 	case 8: {
-		laukimoStrategija();
-		break;
+		lankasKairen();
+	}
+	case 9: {
+		lankasDesinen();
 	}
   }
 }
@@ -588,10 +594,10 @@ bool arNutrauktiLaukima() {
 
 void laukimoStrategija() {
   enum Sonai {
-    priekis,
-    kaire,
-    desine,
-    nezinomas
+	  priekis,
+	  kaire,
+	  desine,
+	  nezinomas
   } paskutinePozicija;
 
   paskutinePozicija == Sonai::nezinomas;
@@ -633,4 +639,101 @@ void laukimoStrategija() {
 	motor(255, 255);
 
 	return;
+}
+
+void amzinasStop() {
+	motor(0, 0);
+	while (true) {}
+}
+
+void lankoStrategija(bool kaire0Desine1) {
+	/** pasiruošiam (numanoma, jog stovim tiesiai pirmyn) */
+
+	Krastai krastas = kaire0Desine1 == 1 ? Krastai::desine : Krastai::kaire;
+
+	if (krastas == Krastai::kaire) {
+		motor(-255, +255);
+	} else {
+		motor(+255, -255);
+	}
+
+	unsigned int laikas90DegPasisukimui = 50;
+
+	delay(laikas90DegPasisukimui);
+	motor(0, 0);
+
+	/** važiuojam lanku */
+
+	int letesnioGreitis = SPEED_NORMAL * 3 / 4;
+
+	if (krastas == Krastai::kaire) {
+		motor(SPEED_NORMAL, letesnioGreitis);
+	}
+	else if (krastas == Krastai::desine) {
+		motor(letesnioGreitis, SPEED_NORMAL);
+	}
+	else {
+		motor(-100, -100); /** TESTIGN */
+	}
+
+	/**
+	 * jeigu sukamės kairėn, tai tikrins, ar dešinės sensoriai ką nors mato.
+	 * jeigu dešinėn, tai ar kairės sensoriai mato
+	 */
+	// auto arVidujeKasNorsMatosi = (krastas == Krastai::kaire) ? arKaireMatoBentVienas : arDesineMatoBentVienas;
+
+	int maxLaikasVaziavimoLanku = 5000;
+
+	unsigned long pradziosLaikas = millis();
+
+	/**
+	 * važiuojam lanku TOL,
+	 * KOL nesibaigė max laikas
+	 * ARBA KOL viduje ką nors pamatom.
+	 *
+	 */
+	while (true) {
+		/** laukiam, nes `motor`ai jau važiuoja */
+
+		/** baigiam, jei baigėsi laikas */
+		if (millis() > pradziosLaikas + maxLaikasVaziavimoLanku) {
+			break;
+		}
+
+		/** FIXME; siunčiam pirmyn ir baigiam, jei pamatom priekyje */
+		// if (arVidujeKasNorsMatosi()) {
+		// // if (krastas == Krastai::kaire && arKaireMatoBentVienas()) {
+
+		// // }
+
+		if (krastas == Krastai::desine) {
+			if (arKaireMatoBentVienas()) {
+				break;
+			}
+		}
+		else if (krastas == Krastai::kaire) {
+			if (arDesineMatoBentVienas()) {
+				break;
+			}
+		}
+
+		// // if ((krastas == Krastai::kaire) ? arDesineMatoBentVienas() : arKaireMatoBentVienas()) {
+		// // 	// motor(255, 255);
+		// // 	break;
+		// // }
+	}
+
+	/** TESTING */
+	// digitalWrite(13, HIGH);
+	// amzinasStop();
+
+	return;
+}
+
+void lankasKairen() {
+	lankoStrategija(Krastai::kaire);
+}
+
+void lankasDesinen() {
+	lankoStrategija(Krastai::desine);
 }
