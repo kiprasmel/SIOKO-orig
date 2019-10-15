@@ -194,35 +194,49 @@ void loop() {
           switch (mySIDES)
           {
             //--------------------------------------------------------------------------
-            case 0b000000://buvo6
+            case 0b00000000://
               Jutikliu_duom();
               Line();
               break;
-            case 0b001000:
-            case 0b111000:
-            case 0b101000:
-            case 0b011000:
-              SpinLeft(SPEED_TURN, 30);//10
+            case 0b00010000://lazeris ilgas
+            case 0b00100000://lazeris trumpas
+            case 0b00110000://lazeriai abu
+            case 0b01100000://lazeris ir pan 45
+            case 0b01110000:// abu laz ir pan 45
+
+            //case 0b11100000:
+           // case 0b10100000:
+
+
+              SpinLeft(SPEED_TURN, 25);//30--i kaire Ar nepersisuks pilnu greiciu???????
               break;
-            case 0b000100:
-            case 0b000110:
-            case 0b000111:
-            case 0b000101:
-              SpinRight(SPEED_TURN, 30);//10
+
+            case 0b00001000:// lazeris ilgas
+            case 0b00000100://lazeris trumpas
+            case 0b00001100://lazeriai abu
+            case 0b00000110://lazeris ir pan 45
+            case 0b00001110://abu laz ir pan 45
+
+            //case 0b00000111:
+           // case 0b00000101:
+
+              SpinRight(SPEED_TURN, 25);//30//i desine ar nepersisuka?????
               break;
-            case 0b010000:
-              SpinLeft(SPEED_TURN, 25);//5
+            //case 0b01000000:
+
+             // SpinLeft(SPEED_TURN, 25);//5
+             // break;
+           // case 0b00000010:
+
+              //SpinRight(SPEED_TURN, 25);//5
+              //break;
+            case 0b11000000:
+            case 0b10000000:
+              SpinLeft(SPEED_TURN, 60);//40 perdaug pasisuka
               break;
-            case 0b000010:
-              SpinRight(SPEED_TURN, 25);//5
-              break;
-            case 0b110000:
-            case 0b100000:
-              SpinLeft(SPEED_TURN, 60);//40
-              break;
-            case 0b000011:
-            case 0b000001:
-              SpinRight(SPEED_TURN, 60);//40
+            case 0b00000011:
+            case 0b00000001:
+              SpinRight(SPEED_TURN, 60);//40 perdaug pasisuka
               break;
               //-------------------------------------------------------------------
           }
