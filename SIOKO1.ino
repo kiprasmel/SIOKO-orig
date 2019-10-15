@@ -67,7 +67,7 @@ int b = 0;
 const byte START_MODULE = 29;
 
 //Varikliu greiciai
-const byte SPEED_NORMAL = 200;//200 tiesiai su senais ratais, 255 nurauna pries gala i sona
+const byte SPEED_NORMAL = 255;//200 tiesiai su senais ratais, 255 nurauna pries gala i sona
 const byte SPEED_TURN = 255;// 220 210
 const byte SPEED_TURN2 = 210;//210
 const byte SPEED_GO_BACK_LINE = 255;
