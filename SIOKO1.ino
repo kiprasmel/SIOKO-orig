@@ -130,6 +130,7 @@ void setup() {
   pinMode(Left1, INPUT);
 
 
+  leduIndikacijaSonamsIrPriekiui(); /** TESTING */
 
   analogWriteFrequency(9, 15000);//
   analogWriteFrequency(7, 15000);// varikliu valdymo daznis
@@ -173,6 +174,8 @@ void setup() {
 
 //------------------------------------------------------------------------------
 void loop() {
+  leduIndikacijaSonamsIrPriekiui(); /** TESTING */
+
   //motor(0,0);
   Jutikliu_duom();
   Line();
