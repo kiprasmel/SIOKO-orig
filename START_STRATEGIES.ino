@@ -664,7 +664,8 @@ void lankoStrategija(bool kaire0Desine1) {
 
 	/** važiuojam lanku */
 
-	int letesnioGreitis = SPEED_NORMAL * 3 / 4;
+	int letesnioGreitis = SPEED_NORMAL * 4 / 5;
+	/** 3 / 4 kai greitis 200 */
 
 	if (krastas == Krastai::kaire) {
 		motor(SPEED_NORMAL, letesnioGreitis);
